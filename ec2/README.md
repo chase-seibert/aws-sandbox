@@ -14,6 +14,7 @@ There are *two different* interfaces, the [Java based CLI tools](http://docs.aws
 ```bash
 sudo pip install awscli
 aws configure
+complete -C aws_completer aws
 # enter credentials from a IAM role (make sure to add to AdministratorAccess policy)
 # us-west-2 & json
 # these are stored in ~/.aws
