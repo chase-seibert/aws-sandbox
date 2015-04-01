@@ -1,5 +1,7 @@
 # ec2
 
+EC2 is a virtual machine service.
+
 - [Official Documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)
 
 ## CLI
@@ -32,3 +34,18 @@ aws ec2 describe-images
 aws ec2 run-instances --image-id ami-29ebb519 --key-name cseibert --instance-type t2.micro
 ssh ubuntu@ec2-54-191-79-106.us-west-2.compute.amazonaws.com
 ```
+
+Make sure your security group settings allow ssh access.
+
+## Elastic Load Balancer (ELB)
+
+Load balance between two or more EC2 instances. Make sure that BOTH your ELB security group and the security group of the instances allow the inbound port.
+
+```bash
+aws elb describe-load-balancers
+aws elb create-load-balancer
+aws elb register-instances-with-load-balancer --instances FOO,BAR
+aws elb describe-instance-health --load-balancer-name www
+```
+
+*Note*: make sure that your daemon can handle the traffic well, otherwise the ELB health check may fail and remove the instance; consisder using something like nginx
