@@ -11,4 +11,5 @@ S3 is a file hosting service.
 ```bash
 aws s3 mb s3://new-bucket/
 aws s3 website new-bucket --index-document index.html --error-document error.html
+aws s3 sync /tmp/foo s3://new-bucket/ --acl public-read --delete
 ```
