@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+aws ec2 import-key-pair --key-name $1 --public-key-material file:///$2

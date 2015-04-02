@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+aws ec2 describe-instances --output=table --query 'Reservations[*].Instances[*].[{id: InstanceId, host: PublicDnsName, state: State.Name, tag1: Tags[0].Value, group1: SecurityGroups[0].GroupName}]'
