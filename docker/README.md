@@ -19,13 +19,13 @@ docker run ubuntu:14.04 /bin/echo 'Hello world'
 
 ## Example flask app
 
-See the `docker/flask` directory.
+See the `docker/flask` directory. The `-it` arguments load it as an interactive process. The `-v` argument mounts the code as a shared read-only directoy, for hot code reloading.
 
 ```bash
 cd docker/flask
 docker build -t cseibert/flask-example .
 boot2docker ip
-docker run -it -p 5000:5000 cseibert/flask-example
+docker run -it -p 5000:5000 -v $(pwd):/code:ro cseibert/flask-example
 docker login
 docker push cseibert/flask-example
 ```
